@@ -16,4 +16,24 @@ resource "aws_instance" "terra-instance" {
    Name = "terra-instance"
  }
 
+ provisioner "file" {
+   source = "web.sh"
+   destination = "/tmp/web.sh"
+
+ }
+
+ provisioner remote-exec{
+   inline = [
+       "chmod u+x /tmp/tmp.sh"
+       "sudo /tmp/tmp.sh"
+
+   ]
+ }
+ connection {
+   user = "ec2-user"
+   private_key = file("ec2-terra-ssh-key-demo")
+   host = self.public_ip
+
+ }
+
 }
