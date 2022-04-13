@@ -25,7 +25,7 @@ resource "aws_instance" "terra-instance" {
  provisioner remote-exec{
    inline = [
        "chmod u+x /tmp/tmp.sh",
-       "sudo /tmp/tmp.sh"
+       "sudo /tmp/web.sh"
 
    ]
  }
